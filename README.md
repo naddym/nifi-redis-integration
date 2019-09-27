@@ -1,13 +1,13 @@
 # Integrating Apache NiFi with Redis
-Redis is a key-value store which allows data to be stored and accessed at lightning fast speeds. Integrating NiFi with external cache system like Redis makes in-memory datastore much durable, reliable and fault-tolerant. Though TC provides internal cache system called DistributedMapCache (DMC) which can either run on all nodes or a single node (seed node). However, niether this is scalable solution (as node count increases then duplication of cache data increases) nor it offers high avalibility if the seed node goes down (single point of failure). Hence, a mechanism of external system is required to address above shortcomings which is eliminated by integrating nifi with redis.
+Redis is a key-value store which allows data to be stored and accessed at lightning fast speeds. Integrating NiFi with external cache system like Redis makes in-memory datastore much durable, reliable and fault-tolerant. Though NiFi provides internal cache system called DistributedMapCache (DMC) which can either run on all nodes or a single node (seed node). However, niether this is scalable solution (as node count increases then duplication of cache data increases) nor it offers high avalibility if the seed node goes down (single point of failure). Hence, a mechanism of external system is required to address above shortcomings which is eliminated by integrating nifi with redis.
 
 ## Configuration Steps
-There are two ways for Integration TC with Redis
+There are two ways for Integrating NiFi with Redis
 - Using docker cli
 - Using docker-compose
 
 ### Using docker cli
-To begin with, we need two docker images (redis image and tc image)
+To begin with, we need two docker images (redis image and nifi image)
 ```
     docker pull apache/nifi
     docker pull redis
@@ -33,7 +33,7 @@ I link redis image with custom network created and bind host port to `6379`
      docker run --rm -it --name redis -p 6379:6379 --network nifi-redis-squad redis
  ```
 
-Again, I link apache/nifi aka tc image with custom network created and bind host port to `8322`
+Again, I link apache/nifi with custom network created and bind host port to `8322`
 ```
     docker run --rm -itd --name nifi -p 8322:8080 --network nifi-redis-squad redis
  ```
