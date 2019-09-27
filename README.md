@@ -2,7 +2,7 @@
 Redis is a key-value store which allows data to be stored and accessed at lightning fast speeds. Integrating NiFi with external cache system like Redis makes in-memory datastore much durable, reliable and fault-tolerant. Though NiFi provides internal cache system called DistributedMapCache (DMC) which can either run on all nodes or a single node (seed node). However, niether this is scalable solution (as node count increases then duplication of cache data increases) nor it offers high avalibility if the seed node goes down (single point of failure). Hence, a mechanism of external system is required to address above shortcomings which is eliminated by integrating nifi with redis.
 
 ## Configuration Steps
-There are two ways for Integrating NiFi with Redis
+There are two ways of Integrating NiFi with Redis
 - Using docker cli
 - Using docker-compose
 
@@ -22,7 +22,7 @@ Before creating a custom network, I wish to see my available network drivers
     docker network ls
  ```
 
-From above drivers, I choose to create a custom network of bridge driver
+From bove drivers, I choose to create a custom network of bridge driver
 ```
     docker network create --driver bridge nifi-redis-squad
  ```
